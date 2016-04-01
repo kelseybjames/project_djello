@@ -1,6 +1,10 @@
 <h1>Board Page</h1>
 <h1>{{ board.title }}</h1>
+<select ng-options='board as board.title for board in boards' ng-model='board'></select>
+<a ng-click='deleteBoard()'>Delete Board</a>
+<a ui-sref='djello.new'>New Board</a>
 
 <div class="row">
-  <div ui-view></div>
+  <a ui-sref='djello.board.lists.new'>Add a list</a>
+  <div ui-view='djello.board.lists'></div>
 </div>

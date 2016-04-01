@@ -39,10 +39,30 @@ djello.config(['$urlRouterProvider', '$stateProvider',
         }]
       }
     })
+    .state('djello.new', {
+      url: 'boards/new',
+      templateUrl: 'templates/newboard.html',
+      controller: 'BoardCtrl'
+    })
     .state('djello.board.lists', {
-      url: 'lists',
+      url: 'boards/lists',
       templateUrl: 'templates/list.html',
       controller: 'ListCtrl',
+      resolve: {
+        board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+          return Restangular.one('boards', $stateParams.id).get();
+        }]
+      }
+    })
+    .state('djello.board.lists.new', {
+      url: 'new',
+      templateUrl: 'templates/newlist.html',
+      controller: 'ListCtrl',
+      resolve: {
+        board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+          return Restangular.one('boards', $stateParams.id).get();
+        }]
+      }
     })
 
     // $urlRouterProvider.otherwise('/');
