@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :boards
+  has_many :lists, through: :boards
+  has_many :cards, through: :lists
 end
