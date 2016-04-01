@@ -1,4 +1,6 @@
-djello.controller('BoardCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+djello.controller('BoardCtrl', ['$scope', 'board', function($scope, board) {
 
-  $scope.board = $stateParams.board;
+  $scope.board = board;
+  $scope.lists = board.lists;
+  console.log($scope.board);
 }])

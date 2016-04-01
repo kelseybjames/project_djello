@@ -17,12 +17,6 @@ djello.config( ['RestangularProvider', function(RestangularProvider) {
 
   RestangularProvider.setBaseUrl('/api/v1');
   RestangularProvider.setRequestSuffix('.json');
-  RestangularProvider.setDefaultHttpFields({
-    "content-type": "application/json"
-  });
-  RestangularProvider.setResponseExtractor( function( response, operation ) {
-    // Extractor code here
-  });
 
 }]);
 
@@ -33,25 +27,24 @@ djello.config(['$urlRouterProvider', '$stateProvider',
 
     .state("djello", {
       url: "/",
-      template: "<div ui-view></div>",
-      controller: "BoardCtrl"
+      template: "<div ui-view></div>"
     })
     .state('djello.board', {
-      url: '/board/:board_id',
-      template: 'templates/board.html',
+      url: 'boards/:id',
+      templateUrl: 'templates/board.html',
       controller: 'BoardCtrl',
       resolve: {
-        board: ['Restangular', function(Restangular){
-          return Restangular.one('boards', id);
+        board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+          return Restangular.one('boards', $stateParams.id).get();
         }]
       }
     })
     .state('djello.board.lists', {
-      url: '/lists',
-      template: 'templates/list.html',
-      controller: 'ListCtrl'
+      url: 'lists',
+      templateUrl: 'templates/list.html',
+      controller: 'ListCtrl',
     })
 
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
 
   }]);

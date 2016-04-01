@@ -3,7 +3,7 @@
 
 //= require bootstrap-sprockets
 
-//= require underscore
+//= require underscore-min
 
 //= require angular
 //= require angular-ui-router
