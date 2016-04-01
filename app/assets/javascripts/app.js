@@ -37,7 +37,7 @@ djello.config(['$urlRouterProvider', '$stateProvider',
       controller: "BoardCtrl"
     })
     .state('djello.board', {
-      url: '/board/:id',
+      url: '/board/:board_id',
       template: 'templates/board.html',
       controller: 'BoardCtrl',
       resolve: {
@@ -45,6 +45,11 @@ djello.config(['$urlRouterProvider', '$stateProvider',
           return Restangular.one('boards', id);
         }]
       }
+    })
+    .state('djello.board.lists', {
+      url: '/lists',
+      template: 'templates/list.html',
+      controller: 'ListCtrl'
     })
 
     $urlRouterProvider.otherwise('/');
