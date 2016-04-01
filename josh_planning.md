@@ -20,14 +20,14 @@
   * auth_token
   * password_digest
 
-### Boards
+### Boards (index, show, create, update, destroy)
 * belongs_to user (owned boards)
 * has_many lists
 * attributes:
   * title
   * user_id
 
-### Lists
+### Lists (index, show, create, update, destroy)
 * belongs_to board
 * has_many cards
 * attributes:
@@ -35,7 +35,7 @@
   * description
   * board_id
 
-### Cards
+### Cards (index, show, create, update, destroy)
 * belongs_to list
 * has_many members through memberships
 * has_many activities
@@ -44,14 +44,14 @@
   * description
   * list_id
 
-### Memberships
+### Memberships (no controller, included with cards)
 * belongs_to card
 * belongs_to member (User)
 * attributes:
   * card_id
   * member_id (User)
 
-### Activity
+### Activity (no controller, included with cards)
 * belongs_to card
 * belongs_to user
 * attributes
