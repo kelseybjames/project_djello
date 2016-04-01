@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root to: "devise/sessions#new"
 
 end
