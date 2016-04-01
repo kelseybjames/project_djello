@@ -3,14 +3,14 @@ class BoardsController < ApplicationController
   def index
     @boards = Board.all
     respond_to do |format|
-      format.json { render json: @boards, includes: 'lists' }
+      format.json { render json: @boards.to_json }
     end
   end
 
   def show
     @board = Board.find(params[:id])
     respond_to do |format|
-      format.json { render json: @board.to_json, includes: :lists }
+      format.json { render json: @board.to_json(include: :lists) }
     end
   end
 end
