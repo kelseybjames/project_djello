@@ -34,7 +34,17 @@ djello.config(['$urlRouterProvider', '$stateProvider',
     .state("djello", {
       url: "/",
       template: "<div ui-view></div>",
-      controller: "OneCtrl"
+      controller: "BoardCtrl"
+    })
+    .state('djello.board', {
+      url: '/board/:id',
+      template: 'templates/board.html',
+      controller: 'BoardCtrl',
+      resolve: {
+        board: ['Restangular', function(Restangular){
+          return Restangular.one('boards', id);
+        }]
+      }
     })
 
     $urlRouterProvider.otherwise('/');
