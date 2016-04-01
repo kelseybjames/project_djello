@@ -1,3 +1,5 @@
+# Djello
+
 * Create rails app with postgres
 * Set up angular, ui-router, restangular
 * Set up database with schema and seeds
