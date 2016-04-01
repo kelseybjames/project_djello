@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401190500) do
+ActiveRecord::Schema.define(version: 20160401210803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "card_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "activities", ["user_id", "card_id"], name: "index_activities_on_user_id_and_card_id", using: :btree
+
+  create_table "board_memberships", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "board_memberships", ["member_id", "board_id"], name: "index_board_memberships_on_member_id_and_board_id", using: :btree
 
   create_table "boards", force: :cascade do |t|
     t.string   "title"
@@ -24,6 +43,15 @@ ActiveRecord::Schema.define(version: 20160401190500) do
   end
 
   add_index "boards", ["user_id"], name: "index_boards_on_user_id", using: :btree
+
+  create_table "card_memberships", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "card_memberships", ["member_id", "card_id"], name: "index_card_memberships_on_member_id_and_card_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
     t.string   "title"
