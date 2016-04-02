@@ -26,11 +26,11 @@ djello.config(['$urlRouterProvider', '$stateProvider',
     $stateProvider
 
     .state("djello", {
-      url: "/",
+      url: "",
       template: "<div ui-view></div>"
     })
-    .state('djello.board', {
-      url: 'boards/:id',
+    .state('djello.boards', {
+      url: '/boards',
       templateUrl: 'templates/board.html',
       controller: 'BoardCtrl',
       resolve: {
@@ -39,32 +39,32 @@ djello.config(['$urlRouterProvider', '$stateProvider',
         }]
       }
     })
-    .state('djello.new', {
-      url: 'boards/new',
+    .state('djello.newboard', {
+      url: '/new',
       templateUrl: 'templates/newboard.html',
       controller: 'BoardCtrl'
     })
-    .state('djello.board.lists', {
-      url: 'boards/lists',
-      templateUrl: 'templates/list.html',
-      controller: 'ListCtrl',
-      resolve: {
-        board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
-          return Restangular.one('boards', $stateParams.id).get();
-        }]
-      }
-    })
-    .state('djello.board.lists.new', {
-      url: 'new',
-      templateUrl: 'templates/newlist.html',
-      controller: 'ListCtrl',
-      resolve: {
-        board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
-          return Restangular.one('boards', $stateParams.id).get();
-        }]
-      }
-    })
+    // .state('djello.boards.lists', {
+    //   url: 'boards/:id/lists',
+    //   templateUrl: 'templates/list.html',
+    //   controller: 'ListCtrl',
+    //   resolve: {
+    //     board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+    //       return Restangular.one('boards', $stateParams.id).get();
+    //     }]
+    //   }
+    // })
+    // .state('djello.boards.lists.new', {
+    //   url: 'new',
+    //   templateUrl: 'templates/newlist.html',
+    //   controller: 'ListCtrl',
+    //   resolve: {
+    //     board: ['Restangular', '$stateParams', function(Restangular, $stateParams){
+    //       return Restangular.one('boards', $stateParams.id).get();
+    //     }]
+    //   }
+    // })
 
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/boards');
 
   }]);

@@ -20,7 +20,8 @@ end
 
 User.all.each do |user|
   3.times do
-    user.boards.create( title: Faker::Hipster.word )
+    board = user.boards.create( title: Faker::Hipster.word )
+    BoardMembership.create( member_id: user.id, board_id: board.id )
   end
 end
 
@@ -32,6 +33,9 @@ end
 
 List.all.each do |list|
   3.times do
-    list.cards.create( title: Faker::Hipster.word, description: Faker::Hipster.sentence )
+    card = list.cards.create( title: Faker::Hipster.word, description: Faker::Hipster.sentence )
+    user = list.user
+
+    CardMembership.create( member_id: user.id, card_id: card.id )
   end
 end
