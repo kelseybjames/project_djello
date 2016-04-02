@@ -15,10 +15,10 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new( board_params )
-    @board.user_id = current_user.id
+    @board = current_user.boards.build( board_params )
     respond_to do |format|
       if @board.save
+        BoardMembership.create( member_id: current_user.id, board_id: @board.id )
         format.json { render json: @board.to_json() }
       else
         format.json { render json: @board.errors, status: :unprocessable_entity }
