@@ -12,4 +12,14 @@ djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', function($sco
       $state.go("djello.boards");
     });
   };
+
+  $scope.deleteBoard = function() {
+    console.log($scope.board);
+    var boardIndex = $scope.boards.indexOf($scope.board);
+    Restangular.one('boards', $scope.board.id).remove().then(function() {
+      $scope.boards.splice(boardIndex, 1);
+      $state.go('djello.boards');
+    });
+  };
+
 }])
