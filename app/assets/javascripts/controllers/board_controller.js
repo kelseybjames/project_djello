@@ -26,8 +26,30 @@ djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal', 
     $scope.card = card;
     var modal = $uibModal.open({
       animation: true,
-      templateUrl: 'templates/modal.html',
+      templateUrl: 'templates/card_show_modal.html',
       controller: 'CardCtrl',
+      scope: $scope
+    })
+  };
+
+  $scope.addCard = function(list) {
+    $scope.list = list;
+    $scope.card = null;
+    var modal = $uibModal.open({
+      animation: true,
+      templateUrl: 'templates/new_card_modal.html',
+      controller: 'CardCtrl',
+      scope: $scope
+    })
+  };
+
+  $scope.addList = function() {
+    console.log($scope.board);
+    $scope.list = null;
+    var modal = $uibModal.open({
+      animation: true,
+      templateUrl: 'templates/new_list_modal.html',
+      controller: 'ListCtrl',
       scope: $scope
     })
   };

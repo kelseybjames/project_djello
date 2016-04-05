@@ -5,8 +5,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @board = Board.find(params[:id])
-    @list = @board.lists.build(whitelisted_params)
+    @list = List.new(whitelisted_params)
     respond_to do |format|
       if @list.save
         format.json { render json: @list.to_json }
@@ -31,6 +30,6 @@ class ListsController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:list).permit(:title, :description)
+    params.require(:list).permit(:title, :description, :board_id)
   end
 end

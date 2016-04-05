@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create a New List</h3>
+</div>
+<div class="modal-body">
+  <form>
+    <label for='list-title'>Title</label>
+    <input type="text" ng-model='list.title' id='list-title'>
+    <label for='list-description'>Description</label>
+    <input type='text' ng-model='list.description' id='list-description'>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="createList()">Create List</button>
+</div>

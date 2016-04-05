@@ -4,7 +4,7 @@
 <a ui-sref='djello.newboard'>New Board</a>
 
 <div class="row">
-  <a ui-sref='djello.newlist({board: board, id: board.id})'>Add a list</a>
+  <a ng-click='addList()'>Add a list</a>
 
   <div class="col-xs-3" style='border: 2px solid black; border-radius: 5px' ng-repeat="list in board.lists">
     <h3>{{ list.title }}</h3>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div>
-      <p>Add Card</p>
+      <a ng-click='addCard(list)'>Add Card</p>
     </div>
   </div>
 
