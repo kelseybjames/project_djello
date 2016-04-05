@@ -3,12 +3,13 @@
 </div>
 <div class="modal-body">
   <p editable-textarea='card.description'>{{ card.description }}</p>
-</div>
-<div class="modal-footer">
+  <h4>Members:</h4>
   <ul>
     <li ng-repeat='member in card.members'>
       <p>{{ member.username }}</p>
     </li>
   </ul>
+</div>
+<div class="modal-footer">
   <button class="btn btn-primary" type="button" ng-click="deleteCard()">Completed</button>
 </div>

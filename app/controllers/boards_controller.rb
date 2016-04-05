@@ -3,14 +3,14 @@ class BoardsController < ApplicationController
   def index
     @boards = current_user.member_boards
     respond_to do |format|
-      format.json { render json: @boards.to_json(include: { lists: { include: :cards } } ) }
+      format.json { render json: @boards.to_json(include: { lists: { include: { cards: { include: :members } } } } ) }
     end
   end
 
   def show
     @board = Board.find(params[:id])
     respond_to do |format|
-      format.json { render json: @board.to_json(include: [{ lists: { include: :cards } }, :members]) }
+      format.json { render json: @boards.to_json(include: { lists: { include: { cards: { include: :members } } } } ) }
     end
   end
 
