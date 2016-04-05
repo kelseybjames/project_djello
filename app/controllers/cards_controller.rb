@@ -17,7 +17,11 @@ class CardsController < ApplicationController
   end
 
   def update
-
+    @card = Card.find(params[:id])
+    respond_to do |format|
+      @card.update
+      format.json { render json: @card.to_json }
+    end
   end
 
   def destroy

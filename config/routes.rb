@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :cards
       resources :board_memberships, only: [:create, :destroy]
       resources :card_memberships, only: [:create, :destroy]
+      resources :activities, only: [:create]
       resources :static_pages
     end
   end

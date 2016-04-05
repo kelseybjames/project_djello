@@ -1,8 +1,8 @@
 <div class="modal-header">
-  <h3 class="modal-title" editable-text='card.title'>{{ card.title }}</h3>
+  <h3 class="modal-title" editable-text='card.title' onaftersave='updateCard()'>{{ card.title }}</h3>
 </div>
 <div class="modal-body">
-  <p editable-textarea='card.description'>{{ card.description }}</p>
+  <p editable-textarea='card.description' onaftersave='updateCard()'>{{ card.description }}</p>
   <h4>Members:</h4>
   <ul>
     <li ng-repeat='member in card.members'>
