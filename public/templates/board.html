@@ -11,13 +11,15 @@
     <p>{{ list.description }}</p>
 
     <div class="row" ng-repeat="card in list.cards" style='border: 1px solid black; border-radius: 2px'>
-      <div class="col-xs-12">
-        <p editable-text='card.title'>{{ card.title }}</p>
-        <p editable-textarea='card.description'>
+      <div class="col-xs-12" ng-click='open(card)'>
+        <p>{{ card.title }}</p>
+        <p>
           {{ card.description }}
         </p>
-        <button class='btn btn-default' ng-click='open(card)'>Open</button>
       </div>
+    </div>
+    <div>
+      <p>Add Card</p>
     </div>
   </div>
 

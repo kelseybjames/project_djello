@@ -23,14 +23,12 @@ djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal', 
   };
 
   $scope.open = function(card) {
+    $scope.card = card;
     var modal = $uibModal.open({
       animation: true,
       templateUrl: 'templates/modal.html',
-      resolve: {
-        card: function() {
-          return card;
-        }
-      }
+      controller: 'CardCtrl',
+      scope: $scope
     })
   };
 
