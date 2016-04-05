@@ -1,4 +1,4 @@
-djello.controller('CardCtrl', ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
+djello.controller('CardCtrl', ['$scope', '$state', 'Restangular', '_', function($scope, $state, Restangular, _) {
 
   $scope.deleteCard = function() {
     $scope.list = Restangular.one('lists', $scope.card.list_id);

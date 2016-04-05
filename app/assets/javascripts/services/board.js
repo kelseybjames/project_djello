@@ -1,4 +1,4 @@
-djello.factory('Boards', ['Restangular', function(Restangular) {
+djello.factory('Boards', ['Restangular', '_', function(Restangular, _) {
     Restangular.extendCollection('boards', function(collection){
         // creates a new post on the server
         // and adds it to the collection

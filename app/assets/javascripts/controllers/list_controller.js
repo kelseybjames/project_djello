@@ -1,4 +1,4 @@
-djello.controller('ListCtrl', ['$scope', '$stateParams', 'Restangular', function($scope, $stateParams, Restangular) {
+djello.controller('ListCtrl', ['$scope', '$stateParams', 'Restangular', '_', function($scope, $stateParams, Restangular, _) {
 
   $scope.createList = function() {
     $scope.list.board_id = $scope.board.id;

@@ -7,7 +7,6 @@ var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise', 'ui
 //         // Use your configured Auth service.
 //     });
 
-
 djello.factory('_', ['$window', function($window) {
   return $window._; // assumes underscore has already been loaded on the page
 }]);

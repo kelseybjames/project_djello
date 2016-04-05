@@ -1,4 +1,4 @@
-djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal', function($scope, $state, Restangular, $uibModal) {
+djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal',, '_', function($scope, $state, Restangular, $uibModal, _) {
 
   $scope.boards = Restangular.all('boards').getList().$object;
   $scope.board = $scope.boards[0];
