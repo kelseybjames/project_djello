@@ -48,6 +48,8 @@ gem 'figaro'
 # Delayed jobs...
 gem 'delayed_job_active_record'
 
+gem 'bootstrap-editable-rails'
+
 group :development do
   # Application preloader
   gem 'spring'

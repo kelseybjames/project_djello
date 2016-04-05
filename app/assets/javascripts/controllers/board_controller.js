@@ -1,4 +1,4 @@
-djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', function($scope, $state, Restangular) {
+djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal', function($scope, $state, Restangular, $uibModal) {
 
   $scope.boards = Restangular.all('boards').getList().$object;
   $scope.board = $scope.boards[0];
@@ -20,6 +20,18 @@ djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', function($sco
       $scope.boards.splice(boardIndex, 1);
       $state.go('djello.boards');
     });
+  };
+
+  $scope.open = function(card) {
+    var modal = $uibModal.open({
+      animation: true,
+      templateUrl: 'templates/modal.html',
+      resolve: {
+        card: function() {
+          return card;
+        }
+      }
+    })
   };
 
 }])

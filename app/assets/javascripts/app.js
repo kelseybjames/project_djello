@@ -1,4 +1,4 @@
-var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise'])
+var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise', 'ui.bootstrap'])
 .config(function(AuthProvider) {
     // Configure Auth service with AuthProvider
 })
@@ -20,8 +20,7 @@ djello.config( ['RestangularProvider', function(RestangularProvider) {
 
 }]);
 
-djello.config(['$urlRouterProvider', '$stateProvider',
-  function($urlRouterProvider, $stateProvider){
+djello.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
 
     $stateProvider
 
@@ -32,12 +31,23 @@ djello.config(['$urlRouterProvider', '$stateProvider',
     .state('djello.boards', {
       url: 'boards',
       templateUrl: 'templates/board.html',
-      controller: 'BoardCtrl'
+      controller: 'BoardCtrl',
+      resolve: {
+        board: ['Boards', '$stateParams', function(Boards, $stateParams) {
+          return Boards.one($stateParams.id).get();
+        }]
+      }
     })
     .state('djello.newboard', {
       url: 'new',
       templateUrl: 'templates/newboard.html',
       controller: 'BoardCtrl'
+    })
+    .state('djello.newlist', {
+      url: 'list/new',
+      templateUrl: 'templates/newlist.html',
+      controller: 'ListCtrl',
+      params: {board: null, id: null}
     })
 
     $urlRouterProvider.otherwise('boards');
