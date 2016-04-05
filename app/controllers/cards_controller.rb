@@ -19,7 +19,7 @@ class CardsController < ApplicationController
   def update
     @card = Card.find(params[:id])
     respond_to do |format|
-      @card.update
+      @card.update(whitelisted_params)
       format.json { render json: @card.to_json }
     end
   end

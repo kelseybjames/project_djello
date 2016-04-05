@@ -23,6 +23,14 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find(params[:id])
+    respond_to do |format|
+      @list.update(whitelisted_params)
+      format.json { render json: @list.to_json }
+    end
+  end
+
   def destroy
     @list = List.find(params[:list_id])
   end
@@ -30,6 +38,6 @@ class ListsController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:list).permit(:title, :description, :board_id)
+    params.require(:list).permit(:id, :title, :description, :board_id)
   end
 end

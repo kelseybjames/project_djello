@@ -26,7 +26,7 @@ djello.controller('CardCtrl', ['$scope', '$state', 'Restangular', function($scop
   };
 
   $scope.updateCard = function() {
-    Restangular.one('cards', $scope.card.id).put({
+    Restangular.one('cards', $scope.card.id).patch({
       title: $scope.card.title,
       description: $scope.card.description
     }).then(function(newCard) {
