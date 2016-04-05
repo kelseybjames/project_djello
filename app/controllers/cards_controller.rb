@@ -24,9 +24,9 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     respond_to do |format|
       if @card.destroy
-
+        format.json { head :no_content }
       else
-
+        format.json { head :no_content }
       end
     end
   end

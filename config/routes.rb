@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     scope :v1 do
       resources :boards
       resources :lists
+      resources :cards
       resources :static_pages
     end
   end
