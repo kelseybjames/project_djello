@@ -7,8 +7,8 @@
   <a ng-click='addList()'>Add a list</a>
 
   <div class="col-xs-3" style='border: 2px solid black; border-radius: 5px' ng-repeat="list in board.lists">
-    <h3>{{ list.title }}</h3>
-    <p>{{ list.description }}</p>
+    <h3 editable-text='list.title' onaftersave='updateList(list)'>{{ list.title }}</h3>
+    <p editable-textarea='list.description' onaftersave='updateList(list)'>{{ list.description }}</p>
 
     <div class="row" ng-repeat="card in list.cards" style='border: 1px solid black; border-radius: 2px'>
       <div class="col-xs-12" ng-click='open(card)'>

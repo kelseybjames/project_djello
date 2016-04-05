@@ -54,4 +54,15 @@ djello.controller('BoardCtrl', ['$scope', '$state', 'Restangular', '$uibModal', 
     })
   };
 
+  $scope.updateList = function(list) {
+    $scope.list = list;
+    console.log($scope.list)
+    Restangular.one('lists', list.id).put({
+      title: $scope.list.title,
+      description: $scope.list.description
+    }).then(function(newList) {
+      console.log(newList);
+    })
+  };
+
 }])

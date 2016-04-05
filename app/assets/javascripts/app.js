@@ -1,4 +1,4 @@
-var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise', 'ui.bootstrap'])
+var djello = angular.module('djello', ['ui.router', 'restangular', 'Devise', 'ui.bootstrap', 'xeditable'])
 .config(function(AuthProvider) {
     // Configure Auth service with AuthProvider
 })
@@ -53,3 +53,7 @@ djello.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvid
     $urlRouterProvider.otherwise('boards');
 
   }]);
+
+djello.run(function(editableOptions) {
+  editableOptions.theme = 'default';
+});
